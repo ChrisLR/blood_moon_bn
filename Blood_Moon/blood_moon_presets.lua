@@ -6,7 +6,7 @@ local gettext = locale.gettext
 ---@type BMPreset
 local _PRESET_RELAXED = {
   name = "Relaxed",
-  desc = "More time between hordes and slower increasing difficulty.",
+  desc = "14 days between hordes and slower increasing difficulty.",
   horde_signal_power = 5,
   horde_days_per_signal_growth = 8,
   horde_max_signal_growth = 2,
@@ -24,7 +24,7 @@ local _PRESET_RELAXED = {
 ---@type BMPreset
 local _PRESET_STANDARD = {
   name = "Standard",
-  desc = "Weekly with recommended values.",
+  desc = "7 days between hordes and default difficulty values.",
   horde_signal_power = constants.DEFAULT_HORDE_SIGNAL_POWER,
   horde_days_per_signal_growth = constants.DEFAULT_HORDE_DAYS_PER_SIGNAL_GROWTH,
   horde_max_signal_growth = constants.DEFAULT_HORDE_MAX_SIGNAL_GROWTH,
@@ -42,7 +42,7 @@ local _PRESET_STANDARD = {
 ---@type BMPreset
 local _PRESET_CHALLENGING = {
   name = "Challenging",
-  desc = "Every two days with faster increasing difficulty.",
+  desc = "2 days between hordes with faster increasing difficulty.",
   horde_signal_power = constants.DEFAULT_HORDE_SIGNAL_POWER,
   horde_days_per_signal_growth = 2,
   horde_max_signal_growth = constants.DEFAULT_HORDE_MAX_SIGNAL_GROWTH,
@@ -87,6 +87,7 @@ end
 
 local function show_select_preset()
   local menu = UiList.new()
+  menu:desc_enabled(true)
   menu:title(gettext("Select Blood Moon Preset"))
   menu:text(gettext("Default is Standard, can be customized manually later via the in-game menu."))
   for idx, preset in ipairs(presets) do
